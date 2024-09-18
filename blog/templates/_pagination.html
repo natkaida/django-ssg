@@ -1,0 +1,19 @@
+<div class="pagination justify-content-center mt-5">
+   {% if is_paginated %}
+   <div class="pagination">
+      {% if page_obj.has_previous %}
+      <a class="btn btn-outline-primary mb-4" href="{% if page_obj.previous_page_number == 1 %}/{% else %}/pages/page{{ page_obj.previous_page_number }}.html{% endif %}">Предыдущая</a>
+      {% endif %}
+      {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+      <a class="btn btn-primary mb-4">{{ num }}</a>
+      {% else %}
+      <a class="btn btn-outline-primary mb-4" href="{% if num == 1 %}/{% else %}/pages/page{{ num }}.html{% endif %}">{{ num }}</a>
+      {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+      <a class="btn btn-outline-primary mb-4" href="/pages/page{{ page_obj.next_page_number }}.html">Следующая</a>
+      {% endif %}
+   </div>
+   {% endif %}
+</div>

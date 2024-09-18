@@ -1,0 +1,20 @@
+<div class="col-md-4 mb-3">
+   <div class="card blog-post-card">
+      <img class="card-img-top" src="{{post.image.url }}" alt="image">
+      <div class="card-body">
+         <h5 class="card-title"><a href="{% url 'blog-post' slug=post.slug %}" class="theme-link" href="post.html">{{ post.title }}</a></h5>
+         <p class="card-text">{{ post.content|safe|truncatechars:"100" }}</p>
+         <p class="mb-0"><a class="text-link" href="{% url 'blog-post' slug=post.slug %}">Подробнее &rarr;</a></p>
+      </div>
+      <div class="card-footer">
+         <div>
+            {% for tag in post.tags.all %}
+            <span class="bg-primary rounded-pill px-2 py-1 me-2 mb-3"><a class="text-decoration-none text-white card-text" href="{% url 'blog-tag' tag=tag.name %}">{{ tag.name }}</a></span>
+            {% endfor %}
+         </div>
+         <div class="mt-2">
+            <small class="text-muted">{{ post.updated }}</small>
+         </div>
+      </div>
+   </div>
+</div>

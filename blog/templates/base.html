@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Блог разработчика - {% block title %}{% endblock %}</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="developers's blog">
+      <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <script defer src="{% static 'assets/js/all.js' %}"></script>
+      <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/theme-1.css' %}">
+      <link id="blog-style" rel="stylesheet" href="{% static 'assets/css/blog_style.css' %}">
+      <link id="code-style" rel="stylesheet" href="{% static 'assets/css/dracula.css' %}">
+   </head>
+   <body>
+      <header class="header text-center">
+         <div class="force-overflow">
+            <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="{% url 'blog-index' %}">Евгений Онегин</a></h1>
+            {% include '_sidebar.html' %}
+         </div>
+      </header>
+      <div class="main-wrapper">
+         {% block content %}{% endblock %}
+         <footer class="footer text-center py-4">
+            <small class="copyright">Блог разработчика &copy; {% now "Y" %} Eugene Onegin</small>
+         </footer>
+      </div>
+      {% include '_styleswitcher.html' %}
+      <script src="{% static 'assets/js/popper.min.js' %}"></script> 
+      <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'assets/js/style-switcher.js' %}"></script>
+      <script src="{% static 'assets/js/dark-mode.js' %}"></script>  
+      <script src="{% static 'assets/js/highlight.min.js' %}"></script>
+      <script src="{% static 'assets/js/blog.js' %}"></script>  
+   </body>
+</html>

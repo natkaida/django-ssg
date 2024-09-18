@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Последние записи{% endblock %}
+{% block content %}
+<section class="cta-section theme-bg-light py-5">
+   <div class="container text-center">
+      <h2 class="heading">Блог о разработке и жизни в ИТ</h2>
+      <div class="intro">Добро пожаловать! Подпишитесь на обновления - письма приходят по субботам</div>
+      <div class="single-form-max-width pt-3 mx-auto">
+         <form action="https://formspree.io/f/xzbnbjgz" method="POST" class="signup-form row g-2 g-lg-2 align-items-center">
+            <div class="col-12 col-md-9">
+               <label class="sr-only" for="semail">Ваш email</label>
+               <input type="email" id="semail" name="semail1" class="form-control me-md-1 semail" placeholder="Ваш email">
+            </div>
+            <div class="col-12 col-md-2">
+               <button type="submit" class="btn btn-primary">Подписаться</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</section>
+<section class="blog-list px-3 py-5 p-md-5">
+   <div class="container">
+      <div class="row">
+         {% for post in posts %}
+         {% include '_post.html' with post=post %}
+         {% endfor %}
+      </div>
+   </div>
+   {% include '_pagination.html' %}
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<article class="blog-post px-3 py-5 p-md-5">
+   <div class="container single-col-max-width">
+      <header class="blog-post-header">
+         <h2 class="title mb-2">{{ post.title }}</h2>
+         <div class="meta mb-3"><span class="date">{{ post.created }}</span><span>Время на чтение: {{ post.read }} мин</span></div>
+      </header>
+      <div class="blog-post-body">
+         <figure class="blog-banner">
+            <a href="/{{post.image.url }}"><img class="img-fluid" src="{{post.image.url }}" alt="image"></a>
+         </figure>
+         <p>{{post.content|safe}}</p>
+         <div class="mt-5">
+            {% for tag in post.tags.all %}
+            <span class="bg-primary rounded-pill px-2 py-1 me-2"><a class="text-decoration-none text-white card-text" href="{% url 'blog-tag' tag=tag.name %}">{{ tag.name }}</a></span>
+            {% endfor %}
+         </div>
+      </div>
+      <nav class="blog-nav nav nav-justified my-5">
+         {% if prev_post %}
+         <a class="nav-link-prev nav-item nav-link rounded-left" href="{% url 'blog-post' slug=prev_post.slug %}">Предыдущая запись<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+         {% endif %}
+         {% if next_post %}
+         <a class="nav-link-next nav-item nav-link rounded-right" href="{% url 'blog-post' slug=next_post.slug %}">Следующая запись<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+         {% endif %}
+      </nav>
+      <a href="{% url 'blog-index' %}" target="_self" class="btn btn-danger">На главную</a>
+   </div>
+</article>
+{% endblock %}

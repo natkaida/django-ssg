@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Написать сообщение{% endblock %}
+{% block content %}
+<section class="cta-section theme-bg-light py-5">
+   <div class="container text-center">
+      <h2 class="title mb-2">Есть вопрос или предложение?</h2>
+      <div class="intro">Я отвечаю на все сообщения</div>
+   </div>
+</section>
+<section class="contact-section px-3 py-5 p-md-5">
+   <div class="container">
+      <form id="contact-form" class="contact-form col-lg-8 mx-lg-auto" action="https://formspree.io/f/xeqyqrke" method="POST">
+         <h3 class="text-center mb-3">Написать сообщение</h3>
+         <div class="row g-3">
+            <div class="col-12 col-md-6">
+               <label class="sr-only" for="cname">Имя</label>
+               <input type="text" class="form-control" id="cname" name="name" placeholder="Имя" minlength="2" required="" aria-required="true">
+            </div>
+            <div class="col-12 col-md-6">
+               <label class="sr-only" for="cemail">Email</label>
+               <input type="email" class="form-control" id="cemail" name="email" placeholder="Ваш email" required="" aria-required="true">
+            </div>
+            <div class="col-12">
+               <label class="sr-only" for="cmessage">Текст сообщения</label>
+               <textarea class="form-control" id="cmessage" name="message" placeholder="Текст сообщения" rows="10" required="" aria-required="true"></textarea>
+            </div>
+            <div class="form-group col-12">
+               <button type="submit" class="btn btn-block btn-primary py-2">Отправить</button>
+            </div>
+         </div>
+      </form>
+   </div>
+</section>
+{% endblock %}

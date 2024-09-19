@@ -4,12 +4,6 @@ from .views import IndexView, PostView, TagView, ContactView
 from .models import Post, Tag
 
 
-def get_index():
-    return None
-
-def get_contact():
-    return None
-
 def get_paginated_index():
     posts = Post.objects.all()
     paginator = Paginator(posts, 6)
@@ -31,7 +25,6 @@ urlpatterns = [
     distill_path('',
                  IndexView.as_view(),
                  name='blog-index',
-                 distill_func=get_index,
                  distill_file='index.html'),
 
     distill_path('pages/page<int:page>.html', 
@@ -52,6 +45,5 @@ urlpatterns = [
     distill_path('contact.html',
                  ContactView.as_view(),
                  name='contact',
-                 distill_func=get_contact,
                  distill_file='contact.html'),
 ]
